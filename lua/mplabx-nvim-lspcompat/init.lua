@@ -35,7 +35,15 @@ if file_exists("nbproject/configurations.xml")
 		file:write(include_flag.."/legacy\n")
 		file:write(include_flag.."/proc\n")
 		file:write("-includebuiltins.h\n")
+		file:write("-D__bit=char\n")
+		file:write("-D__uint24=int\n")
+		file:write("-Wno-unknown-attributes\n")
 		file:write(device_flag)
+		if string.find(device, "PIC18") == 0 then
+			file:write("-includepic18.h\n")
+		else 
+			file:write("-includepic.h\n")
+		end
 		file:close()
 
 	elseif toolsSet.languageToolchain == "XC16" then

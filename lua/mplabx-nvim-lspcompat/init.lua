@@ -38,11 +38,11 @@ if file_exists("nbproject/configurations.xml")
 		file:write("-D__bit=char\n")
 		file:write("-D__uint24=int\n")
 		file:write("-Wno-unknown-attributes\n")
-		file:write(device_flag)
-		if string.find(device, "PIC18") == 0 then
-			file:write("-includepic18.h\n")
+		file:write(device_flag.."\n")
+		if string.find(device, "PIC18") ~= -1 then
+			file:write("-includepic18.h")
 		else 
-			file:write("-includepic.h\n")
+			file:write("-includepic.h")
 		end
 		file:close()
 

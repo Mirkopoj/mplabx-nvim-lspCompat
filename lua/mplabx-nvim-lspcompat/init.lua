@@ -22,7 +22,7 @@ if file_exists("nbproject/configurations.xml")
 	local parser_priv = xml2lua.parser(handler_priv)
 	parser_priv:parse(xml2lua.loadFile("nbproject/private/configurations.xml"))
 
-	local toolchainDir = handler_priv.root.configurationDescriptor.confs.conf.languageToolchainDir
+	local toolchainDir = handler_priv.root.configurationDescriptor.confs.conf[1].languageToolchainDir
 
 	local device = toolsSet.targetDevice
 

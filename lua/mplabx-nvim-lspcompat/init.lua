@@ -16,7 +16,7 @@ if file_exists("nbproject/configurations.xml")
 	local parser_pub = xml2lua.parser(handler_pub)
 	parser_pub:parse(xml2lua.loadFile("nbproject/configurations.xml"))
 
-	local toolsSet = handler_pub.root.configurationDescriptor.confs.conf.toolsSet
+	local toolsSet = handler_pub.root.configurationDescriptor.confs.conf[1].toolsSet
 
 	local handler_priv = handler:new()
 	local parser_priv = xml2lua.parser(handler_priv)

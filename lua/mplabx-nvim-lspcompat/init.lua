@@ -16,13 +16,25 @@ if file_exists("nbproject/configurations.xml")
 	local parser_pub = xml2lua.parser(handler_pub)
 	parser_pub:parse(xml2lua.loadFile("nbproject/configurations.xml"))
 
-	local toolsSet = handler_pub.root.configurationDescriptor.confs.conf[1].toolsSet
+	local conf_aux = handler_pub.root.configurationDescriptor.confs.conf
+	local toolsSet
+	if conf_aux.toolsSet == nil then
+		toolsSet = conf_aux[1].toolsSet
+	else
+		toolsSet = conf_aux.toolsSet
+	end
 
 	local handler_priv = handler:new()
 	local parser_priv = xml2lua.parser(handler_priv)
 	parser_priv:parse(xml2lua.loadFile("nbproject/private/configurations.xml"))
 
-	local toolchainDir = handler_priv.root.configurationDescriptor.confs.conf[1].languageToolchainDir
+	conf_aux = handler_priv.root.configurationDescriptor.confs.conf
+	local toolchainDir
+	if conf_aux.languageToolchainDir == nil then
+		toolchainDir = conf_aux[1].languageToolchainDir
+	else
+		toolchainDir = conf_aux.languageToolchainDir
+	end
 
 	local device = toolsSet.targetDevice
 
@@ -41,7 +53,7 @@ if file_exists("nbproject/configurations.xml")
 		file:write(device_flag.."\n")
 		if string.find(device, "PIC18") ~= -1 then
 			file:write("-includepic18.h")
-		else 
+		else
 			file:write("-includepic.h")
 		end
 		file:close()

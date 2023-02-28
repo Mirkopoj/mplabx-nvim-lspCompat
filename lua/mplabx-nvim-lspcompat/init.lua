@@ -49,7 +49,7 @@ if file_exists("nbproject/configurations.xml")
 		file:write("-includebuiltins.h\n")
 		file:write("-D__bit=char\n")
 		file:write("-D__uint24=int\n")
-		file:write("-Wno-unknown-attributes\n")
+		file:write("-Daddress(x)=weak\n")
 		file:write(device_flag.."\n")
 		if string.find(device, "PIC18") ~= -1 then
 			file:write("-includepic18.h")

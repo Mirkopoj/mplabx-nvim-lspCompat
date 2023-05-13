@@ -60,7 +60,7 @@ if file_exists("nbproject/configurations.xml")
 
 	elseif toolsSet.languageToolchain == "XC16" then
 
-		local device_flag = "-D__"..device.."__=1"
+		local device_flag = "-D__"..device.."__=1\n"
 		local device_header = string.match(device,"[ds]*PIC%d%d%u")
 		local include_flag = "-I"..string.gsub(toolchainDir,"bin","")
 		local file = io.open("compile_flags.txt", "w")
